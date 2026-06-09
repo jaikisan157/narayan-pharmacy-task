@@ -144,8 +144,15 @@ export default function PrescriptionsList() {
             )}
 
             {modalError && (
-              <div className="error-banner" style={{ marginTop: "1.5rem" }}>
-                <strong>Error:</strong> {modalError}
+              <div style={{ marginTop: "1.5rem" }}>
+                <div className="error-banner">
+                  <strong>Error:</strong> {modalError}
+                </div>
+                <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "1.5rem" }}>
+                  <button className="btn btn-secondary" onClick={() => setIsModalOpen(false)}>
+                    Close Profile
+                  </button>
+                </div>
               </div>
             )}
 
@@ -236,6 +243,13 @@ export default function PrescriptionsList() {
                       </div>
                     )
                   )}
+                </div>
+
+                {/* Bottom Close Button */}
+                <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "2rem", borderTop: "1px solid var(--border-color)", paddingTop: "1.5rem" }}>
+                  <button className="btn btn-secondary" onClick={() => setIsModalOpen(false)}>
+                    Close Profile
+                  </button>
                 </div>
               </div>
             )}
