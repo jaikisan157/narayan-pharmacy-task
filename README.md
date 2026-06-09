@@ -22,7 +22,7 @@ Follow these simple commands to run the project locally on your machine.
 
 **1. Create and activate Python virtual environment, then install backend dependencies:**
 ```bash
-python -m venv backend/.venv && backend/.venv/Scripts/pip install -r backend/requirements.txt
+python -m venv backend\.venv && backend\.venv\Scripts\pip install -r backend\requirements.txt
 ```
 
 **2. Configure environment files:**
@@ -33,7 +33,7 @@ copy .env.example backend\.env && copy .env.example frontend\.env
 
 **3. Run database migrations:**
 ```bash
-backend/.venv/Scripts/python backend/manage.py migrate
+backend\.venv\Scripts\python backend\manage.py migrate
 ```
 
 **4. Install frontend packages:**
