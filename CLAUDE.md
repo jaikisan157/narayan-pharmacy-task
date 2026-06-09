@@ -19,7 +19,8 @@ narayan-pharmacy-task/
 ├── README.md
 ├── CLAUDE.md
 ├── MEMORY.md
-├── start.bat           # Server launcher script
+├── start.bat           # Windows server launcher script
+├── start.sh            # macOS/Linux server launcher script
 └── .env.example
 ```
 
@@ -32,13 +33,14 @@ Both backend and frontend require `.env` files copied from `.env.example`:
 
 ### Execution Commands
 * **Run Django Server:**
-  `cd backend && .venv/Scripts/python manage.py runserver`
-* **Run Next.js Dev Server (Bypassing Windows Ampersand Bug):**
-  `cd frontend && node "node_modules/next/dist/bin/next" dev`
+  `cd backend` then `.venv/Scripts/python manage.py runserver` (Windows)
+  `cd backend` then `.venv/bin/python manage.py runserver` (macOS/Linux)
+* **Run Next.js Dev Server:**
+  `cd frontend` then `npm run dev`
 * **Run Both Simultaneously:**
-  `start.bat` from root.
+  `start.bat` (Windows) or `bash start.sh` (macOS/Linux) from root.
 * **Backend Migrations:**
-  `python manage.py makemigrations && python manage.py migrate`
+  `python manage.py makemigrations` then `python manage.py migrate`
 
 ## Code Conventions
 * **REST API:**
@@ -48,5 +50,10 @@ Both backend and frontend require `.env` files copied from `.env.example`:
   * Python: `snake_case` for variables/methods, `PascalCase` for models/views.
   * Javascript: `camelCase` for variables/states, `PascalCase` for React components.
 * **Interaction Caching:**
-  * Drug combinations are cached alphabetically by joining normalized lowercase names with `+` (e.g. `caffeine+ciprofloxacin`).
+  * Drug combinations are cached alphabetically by joining normalized lowercase names **and dosages** with `+` (e.g. `lisinopril(10mg)+metformin(500mg)`).
+  * If the dosage for any drug changes, a fresh Claude API call is triggered (cache miss).
   * API checks are bypassed if the prescription contains `count <= 1` drugs.
+
+## Gotchas
+* **Windows Paths:** The workspace folder name contains `&`, which is a reserved command separator in Windows CMD. The `start.bat` script bypasses this by invoking the Next.js binary via Node directly rather than using `npm run dev`.
+* **Claude Model Versions:** Older Claude 3.x models (e.g. `claude-3-5-sonnet-20241022`) are deprecated. The app defaults to `claude-sonnet-4-6` via the `CLAUDE_MODEL` environment variable.

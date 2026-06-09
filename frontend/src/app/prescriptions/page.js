@@ -150,7 +150,7 @@ export default function PrescriptionsList() {
                 </div>
                 <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "1.5rem" }}>
                   <button className="btn btn-secondary" onClick={() => setIsModalOpen(false)}>
-                    Close Profile
+                    Close Details
                   </button>
                 </div>
               </div>
@@ -173,7 +173,7 @@ export default function PrescriptionsList() {
                 </div>
 
                 {/* Patient Metadata Grid */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", background: "rgba(255,255,255,0.02)", padding: "1rem", borderRadius: "8px", marginBottom: "1.5rem", border: "1px solid var(--border-color)" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", background: "var(--bg-secondary)", padding: "1rem", borderRadius: "8px", marginBottom: "1.5rem", border: "1px solid var(--border-color)" }}>
                   <div>
                     <span className="form-label" style={{ fontSize: "0.75rem" }}>Patient</span>
                     <p style={{ fontSize: "1.05rem", fontWeight: 500, marginTop: "0.25rem" }}>{selectedPrescription.patient_name}</p>
@@ -238,7 +238,7 @@ export default function PrescriptionsList() {
                     </div>
                   ) : (
                     selectedPrescription.severity !== "Error" && (
-                      <div style={{ background: "rgba(16, 185, 129, 0.05)", border: "1px dashed var(--severity-none)", borderRadius: "8px", padding: "1rem", textAlign: "center", color: "var(--severity-none)", fontSize: "0.95rem" }}>
+                      <div style={{ background: "var(--severity-none-bg)", border: "1px dashed var(--severity-none)", borderRadius: "8px", padding: "1rem", textAlign: "center", color: "var(--severity-none)", fontSize: "0.95rem" }}>
                         ✔ No drug-drug interactions identified for this prescription.
                       </div>
                     )
@@ -248,7 +248,7 @@ export default function PrescriptionsList() {
                 {/* Bottom Close Button */}
                 <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "2rem", borderTop: "1px solid var(--border-color)", paddingTop: "1.5rem" }}>
                   <button className="btn btn-secondary" onClick={() => setIsModalOpen(false)}>
-                    Close Profile
+                    Close Details
                   </button>
                 </div>
               </div>

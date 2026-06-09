@@ -270,7 +270,7 @@ export default function NewPrescription() {
             </div>
           ) : (
             result.severity !== "Error" && (
-              <div style={{ background: "rgba(16, 185, 129, 0.05)", border: "1px dashed var(--severity-none)", borderRadius: "8px", padding: "1.25rem", textAlign: "center", color: "var(--severity-none)" }}>
+              <div style={{ background: "var(--severity-none-bg)", border: "1px dashed var(--severity-none)", borderRadius: "8px", padding: "1.25rem", textAlign: "center", color: "var(--severity-none)" }}>
                 ✔ No drug-drug interactions detected for this prescription. Safe to proceed with dispensing.
               </div>
             )

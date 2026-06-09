@@ -8,6 +8,8 @@ ENV/
 env/
 db.sqlite3
 .env
+staticfiles/
+scratch/
 
 # Next.js / Node
 node_modules/
