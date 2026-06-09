@@ -52,4 +52,6 @@
 * *API Error:* A `404 not_found_error` was returned for the legacy `claude-3-5-sonnet-20241022` model.
 * *Investigation:* Probed the active model endpoints using a custom list models diagnostic script (`list_models.py`). Discovered that in mid-2026, older 3.x models are deprecated and retired, replaced by the Claude 4.x family (such as `claude-sonnet-4-6` and `claude-opus-4-8`).
 * *Action:* Configured the application default model to `claude-sonnet-4-6` and updated local `.env` and `.env.example` configurations, enabling successful live API testing.
+* *Deployment Protection:* To safeguard the candidate's personal Anthropic credits upon public deployment, we integrated Django REST Framework's **`AnonRateThrottle`** in `settings.py` (limited to 50 requests per day per IP). This blocks bot-abuse and spammers while leaving ample headroom for the interview panel to test the live application.
+
 
