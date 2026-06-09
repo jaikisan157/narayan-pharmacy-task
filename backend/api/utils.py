@@ -9,13 +9,24 @@ logger = logging.getLogger(__name__)
 
 def normalize_drug_key(drugs_list):
     """
-    Normalizes drug names and sorts them alphabetically to create a unique cache key.
-    E.g., [{"drug_name": " Metformin "}, {"drug_name": "Lisinopril"}] -> "lisinopril+metformin"
+    Normalizes drug names and dosages and sorts them alphabetically by drug name to create a unique cache key.
+    E.g., [{"drug_name": " Metformin ", "dosage": "500mg"}, {"drug_name": "Lisinopril", "dosage": "10mg"}]
+    -> "lisinopril(10mg)+metformin(500mg)"
     """
-    names = [item['drug_name'].strip().lower() for item in drugs_list if 'drug_name' in item]
-    names = [name for name in names if name] # Filter out empty names
-    names.sort()
-    return "+".join(names)
+    items = []
+    for item in drugs_list:
+        name = item.get('drug_name', '').strip().lower()
+        dosage = item.get('dosage', '').strip().lower()
+        if name:
+            items.append((name, dosage))
+            
+    # Sort alphabetically by drug name to ensure order consistency
+    items.sort(key=lambda x: x[0])
+    
+    # Format as drugname(dosage) to capture dosage variations
+    formatted_items = [f"{name}({dosage})" if dosage else f"{name}(none)" for name, dosage in items]
+    return "+".join(formatted_items)
+
 
 
 def call_claude_for_interactions(drugs_list):
@@ -67,7 +78,7 @@ Your output must be a single JSON object structured exactly like this:
 }}
 If no interactions exist, set "severity" to "None", "has_interactions" to false, and "details" to an empty list []."""
 
-    model = os.getenv('CLAUDE_MODEL', 'claude-3-5-sonnet-20241022')
+    model = os.getenv('CLAUDE_MODEL', 'claude-sonnet-4-6')
     
     response = client.messages.create(
         model=model,
