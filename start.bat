@@ -8,7 +8,8 @@ start "Narayan Rx Backend" cmd /k "cd backend && .venv\Scripts\python manage.py 
 
 :: Launch Next.js frontend in a new cmd window
 echo Launching Frontend Server on http://localhost:3000 ...
-start "Narayan Rx Frontend" cmd /k "cd frontend && node \"node_modules\next\dist\bin\next\" dev"
+start "Narayan Rx Frontend" cmd /k "cd frontend && node node_modules\next\dist\bin\next dev"
+
 
 echo.
 echo Both servers launching! Check the opened console windows for logs.
