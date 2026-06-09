@@ -22,12 +22,14 @@ Follow these simple commands to run the project locally on your machine.
 
 **1. Create and activate Python virtual environment, then install backend dependencies:**
 ```bash
-python -m venv backend\.venv && backend\.venv\Scripts\pip install -r backend\requirements.txt
+python -m venv backend\.venv
+backend\.venv\Scripts\pip install -r backend\requirements.txt
 ```
 
 **2. Configure environment files:**
 ```bash
-copy .env.example backend\.env && copy .env.example frontend\.env
+copy .env.example backend\.env
+copy .env.example frontend\.env
 ```
 *(Note: Open `backend/.env` and replace `your_key_here` with your real Anthropic Claude API key).*
 
