@@ -45,3 +45,11 @@
 ### Phase 4: UX Refinement
 * *Issue:* During browser subagent testing, we observed that on smaller screens, the modal popup occupied the entire viewport, making it difficult to click outside to close the card.
 * *Solution:* Added a dedicated `"Close Profile"` button at the bottom of the modal content card for both successful data displays and fallback error states. This significantly enhanced the accessibility and responsiveness of Screen 2.
+
+### Phase 5: Caching Refinement & 2026 Model Deprecations (Post-Feedback Iteration)
+* *Tip from Reviewer:* Dosage levels impact clinical drug-drug interactions, so caching must differentiate based on dosage.
+* *Solution:* We redesigned our combination key normalizer (`normalize_drug_key` in `utils.py`) to map drug names and dosages (e.g. `sildenafil(50mg)+nitroglycerin(0.4mg)`). This allows new checks to trigger if dosages change, fulfilling the reviewer's guidance.
+* *API Error:* A `404 not_found_error` was returned for the legacy `claude-3-5-sonnet-20241022` model.
+* *Investigation:* Probed the active model endpoints using a custom list models diagnostic script (`list_models.py`). Discovered that in mid-2026, older 3.x models are deprecated and retired, replaced by the Claude 4.x family (such as `claude-sonnet-4-6` and `claude-opus-4-8`).
+* *Action:* Configured the application default model to `claude-sonnet-4-6` and updated local `.env` and `.env.example` configurations, enabling successful live API testing.
+
