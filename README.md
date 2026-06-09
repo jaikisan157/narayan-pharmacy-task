@@ -40,7 +40,9 @@ backend\.venv\Scripts\python backend\manage.py migrate
 
 **4. Install frontend packages:**
 ```bash
-cd frontend && npm install && cd ..
+cd frontend
+npm install
+cd ..
 ```
 
 **5. Start both servers in parallel:**
