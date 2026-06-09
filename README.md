@@ -29,7 +29,7 @@ python -m venv backend/.venv && backend/.venv/Scripts/pip install -r backend/req
 ```bash
 copy .env.example backend\.env && copy .env.example frontend\.env
 ```
-*(Note: Open `backend/.env` and replace `your_anthropic_api_key_here` with your real Anthropic Claude API key).*
+*(Note: Open `backend/.env` and replace `your_key_here` with your real Anthropic Claude API key).*
 
 **3. Run database migrations:**
 ```bash
