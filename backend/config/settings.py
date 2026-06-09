@@ -140,3 +140,14 @@ ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY', '')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django REST Framework Rate Limiting (Throttle Protection)
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '50/day',  # Limit anonymous users to 50 requests per day per IP
+    }
+}
+
