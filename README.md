@@ -18,23 +18,23 @@ Follow these simple commands to run the project locally on your machine.
 ### Prerequisites
 * Python 3.10+ and Node.js 18+ installed on your system.
 
-### Windows
+### Windows (PowerShell & Command Prompt)
 
-```bash
+```powershell
 # 1. Install backend
-python -m venv backend\.venv && backend\.venv\Scripts\pip install -r backend\requirements.txt
+python -m venv backend\.venv && .\backend\.venv\Scripts\pip install -r backend\requirements.txt
 
 # 2. Configure environment (then edit backend\.env to add your ANTHROPIC_API_KEY)
 copy .env.example backend\.env && copy .env.example frontend\.env
 
 # 3. Run database migrations
-backend\.venv\Scripts\python backend\manage.py migrate
+.\backend\.venv\Scripts\python backend\manage.py migrate
 
 # 4. Install frontend
 cd frontend && npm install && cd ..
 
 # 5. Start both servers
-start.bat
+.\start.bat
 ```
 
 ### macOS / Linux
