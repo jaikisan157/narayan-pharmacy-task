@@ -11,7 +11,7 @@ A specialized clinical pharmacist workstation from our pharmacy SaaS platform. P
 
 ---
 
-## Local Setup (Under 5 Commands)
+## Local Setup (Exactly 5 Commands)
 
 Follow these simple commands to run the project locally on your machine.
 
@@ -21,42 +21,38 @@ Follow these simple commands to run the project locally on your machine.
 ### Windows (PowerShell & Command Prompt)
 
 ```powershell
-# 1. Install backend
-python -m venv backend\.venv
-.\backend\.venv\Scripts\pip install -r backend\requirements.txt
+# 1. Clone the repository
+git clone <repository_url>
 
-# 2. Configure environment (then edit backend\.env to add your ANTHROPIC_API_KEY)
-copy .env.example backend\.env
-copy .env.example frontend\.env
+# 2. Run the setup script (sets up virtual env, installs dependencies, templates env files)
+.\setup.bat
 
-# 3. Run database migrations
+# 3. Add your Claude API Key in backend\.env
+# Open backend\.env and replace your_key_here with your real ANTHROPIC_API_KEY
+
+# 4. Run database migrations
 .\backend\.venv\Scripts\python backend\manage.py migrate
 
-# 4. Install frontend
-cd frontend
-npm install
-cd ..
-
-# 5. Start both servers
+# 5. Start both backend and frontend servers
 .\start.bat
 ```
 
 ### macOS / Linux
 
 ```bash
-# 1. Install backend
-python3 -m venv backend/.venv && backend/.venv/bin/pip install -r backend/requirements.txt
+# 1. Clone the repository
+git clone <repository_url>
 
-# 2. Configure environment (then edit backend/.env to add your ANTHROPIC_API_KEY)
-cp .env.example backend/.env && cp .env.example frontend/.env
+# 2. Run the setup script (sets up virtual env, installs dependencies, templates env files)
+bash setup.sh
 
-# 3. Run database migrations
+# 3. Add your Claude API Key in backend/.env
+# Open backend/.env and replace your_key_here with your real ANTHROPIC_API_KEY
+
+# 4. Run database migrations
 backend/.venv/bin/python backend/manage.py migrate
 
-# 4. Install frontend
-cd frontend && npm install && cd ..
-
-# 5. Start both servers
+# 5. Start both backend and frontend servers
 bash start.sh
 ```
 
